@@ -27,7 +27,7 @@ $(".submit").on("click", function (event) {
   var frequency = $("#frequency-input").val();
 
 
-  //temp object to hold on to everything the train data
+  //temp object to hold on to the train data
 
   var newTrainAdded = {
 
@@ -57,4 +57,25 @@ $(".submit").on("click", function (event) {
   $("#destination-name-input").val("");
   $("#first-train-time-input").val("");
   $("#frequency-input").val("");
+});
+
+//adding firebase functionality
+
+database.ref().on("child_added", function (childSnapshot) {
+  console.log(childSnapshot.val());
+
+  var trainName = childSnapshot.val().train;
+  var destination = childSnapshot.val().destination;
+  var firstTrain = childSnapshot.val().firstTrain;
+  var frequency = childSnapshot.val().frequency;
+
+  console.log(trainName);
+  console.log(destination);
+  console.log(firstTrain);
+  console.log(frequency);
+
+  //format the firsttrain
+
+  var firstTrainFormatted = moment.unix(firstTrain).format("MM/DD/YYYY");
+
 });
