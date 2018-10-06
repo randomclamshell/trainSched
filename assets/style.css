@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url(https://images.pexels.com/photos/461772/pexels-photo-461772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background: gray;
   z-index: -234;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -12,4 +12,28 @@ body {
 nav {
   display: inline-block;
 
+}
+
+.trains {
+  align-content: center;
+  width: 50%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.addTrain {
+  width: 50%;
+}
+
+form-group {
+  padding: 5px;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+#trainCard {
+  width: 50%;
+  margin: 0 auto;
 }
