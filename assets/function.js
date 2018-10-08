@@ -43,7 +43,7 @@ $(".submit").on("click", function (event) {
 
   //console logs
   
-  console.log(newTrainAdded.train);
+  console.log(newTrainAdded.trainName);
   console.log(newTrainAdded.destination);
   console.log(newTrainAdded.firstTrain);
   console.log(newTrainAdded.frequency);
