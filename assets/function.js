@@ -57,6 +57,8 @@ $(".submit").on("click", function (event) {
   $("#destination-name-input").val("");
   $("#first-train-time-input").val("");
   $("#frequency-input").val("");
+
+  return false;
 });
 
 //adding firebase functionality
@@ -64,7 +66,7 @@ $(".submit").on("click", function (event) {
 database.ref().on("child_added", function (childSnapshot) {
   console.log(childSnapshot.val());
 
-  var trainName = childSnapshot.val().train;
+  var trainName = childSnapshot.val().trainName;
   var destination = childSnapshot.val().destination;
   var firstTrain = childSnapshot.val().firstTrain;
   var frequency = childSnapshot.val().frequency;
@@ -76,6 +78,36 @@ database.ref().on("child_added", function (childSnapshot) {
 
   //format the firsttrain
 
-  var firstTrainFormatted = moment.unix(firstTrain).format("MM/DD/YYYY");
+  // var firstTrainFormatted = moment.unix(firstTrain).format("hh:mm");
 
+  // console.log(firstTrainFormatted);
+
+  var timeArr = firstTrain.split(":");
+
+  var firstTrainTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
+  var maxMoment = moment.max(moment(), firstTrainTime); //this only checks to see if the first train already left or if its yet to come
+
+  var tMinutes; //the difference between the current time and when the first train
+  var tArrival; //when the bext train is arriving
+
+  //the the first train is later than the current time, send arrival to the first train time
+
+  if (maxMoment === firstTrainTime) {
+    tArrival = firstTrainTime.format("hh:mm A");
+    tMinutes = firstTrainTime.diff(moment(), "minutes");
+
+  } else {
+
+    var difference = moment().diff(firstTrainTime, "minutes");
+    var tRemainder = difference % frequency;
+
+    tMinutes = frequency - tRemainder;
+
+    tArrival = moment().add(tMinutes, "m").format("hh:mm A");
+  }
+
+  console.log(tMinutes);
+  console.log(tArrival);
+
+  $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td></tr><td>" + firstTrain + "</td></tr><td>" + frequency + "</td></tr>");
 });
