@@ -3,10 +3,11 @@
 }
 
 body {
-  background: gray;
+  background: black;
   z-index: -234;
   background-size: 100%;
   background-repeat: no-repeat;
+  margin: 0 auto;
 }
 
 nav {
@@ -33,7 +34,14 @@ button {
   margin-bottom: 10px;
 }
 
-#trainCard {
+card {
   width: 50%;
   margin: 0 auto;
+}
+
+.heading {
+  margin: 0 auto;
+  color: blanchedalmond;
+  font-family: 'Exo 2', sans-serif;
+  
 }

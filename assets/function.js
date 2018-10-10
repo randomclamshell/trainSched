@@ -15,7 +15,7 @@ var database = firebase.database();
 
 
 //adding functionality to the button
-$(".submit").on("click", function (event) {
+$("#submit").on("click", function (event) {
   event.preventDefault();
 
 
@@ -82,32 +82,36 @@ database.ref().on("child_added", function (childSnapshot) {
 
   // console.log(firstTrainFormatted);
 
-  var timeArr = firstTrain.split(":");
 
-  var firstTrainTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
-  var maxMoment = moment.max(moment(), firstTrainTime); //this only checks to see if the first train already left or if its yet to come
+   // Time is 3:30 AM
+   var firstTime = "03:30";
 
-  var tMinutes; //the difference between the current time and when the first train
-  var tArrival; //when the bext train is arriving
+   // First Time (pushed back 1 year to make sure it comes before current time)
+   var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+   console.log(firstTimeConverted);
 
-  //the the first train is later than the current time, send arrival to the first train time
+   // Current Time
+   var currentTime = moment();
+   console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-  if (maxMoment === firstTrainTime) {
-    tArrival = firstTrainTime.format("hh:mm A");
-    tMinutes = firstTrainTime.diff(moment(), "minutes");
+   // Difference between the times
+   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+   console.log("DIFFERENCE IN TIME: " + diffTime);
 
-  } else {
+   // Time apart (remainder)
+   var tRemainder = diffTime % frequency;
+   console.log(tRemainder);
 
-    var difference = moment().diff(firstTrainTime, "minutes");
-    var tRemainder = difference % frequency;
+   // Minute Until Train
+   var tMinutesTillTrain = frequency - tRemainder;
+   console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-    tMinutes = frequency - tRemainder;
+   // Next Train
+   var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-    tArrival = moment().add(tMinutes, "m").format("hh:mm A");
-  }
-
-  console.log(tMinutes);
-  console.log(tArrival);
-
-  $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td></tr><td>" + firstTrain + "</td></tr><td>" + frequency + "</td></tr>");
+  var arrTime = moment(nextTrain).format("hh:mm");
+  
+  $("#train-table").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + 
+  "</td><td>" + arrTime + "</td>" + "<td>" + tMinutesTillTrain + "</tr>");
 });
