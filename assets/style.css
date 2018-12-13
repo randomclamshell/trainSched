@@ -1,33 +1,21 @@
 * {
   align-content: center;
+  text-align: center;
+ 
 }
 
 body {
-  background: black;
+  background-image: url("https://images.pexels.com/photos/374684/pexels-photo-374684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   z-index: -234;
   background-size: 100%;
   background-repeat: no-repeat;
   margin: 0 auto;
 }
 
-nav {
-  display: inline-block;
-
-}
-
-.trains {
-  align-content: center;
-  width: 50%;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.addTrain {
-  width: 50%;
-}
-
 form-group {
   padding: 5px;
+  width: 50%;
+  align-content: inherit;
 }
 
 button {
@@ -41,7 +29,25 @@ card {
 
 .heading {
   margin: 0 auto;
-  color: blanchedalmond;
-  font-family: 'Exo 2', sans-serif;
+  font-family: 'Major Mono Display', monospace;
+  font-size: 50px;
+  background-image: url("https://images.pexels.com/photos/988872/pexels-photo-988872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+
+.trainTable,
+.trainAdd {
+  font-family: 'Acme', sans-serif;
+  width: 50%;
+ color: brown;
+background-color: antiquewhite;
+ margin: auto;
+}
+
+thead {
+  background-color: black;
+  font-family: 'Acme', sans-serif;
+}
+#title {
+  background-color: gray;
   
 }

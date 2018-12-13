@@ -5,70 +5,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/png" href="http://icons.iconarchive.com/icons/icons8/windows-8/256/Transport-Train-icon.png"/>
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
-  <link href="https://fonts.googleapis.com/css?family=Exo+2|Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Major+Mono+Display" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <title>Train Schedule</title>
 </head>
 
 <body>
   <div class="heading">
-    <h1 class="text-center">Anytime is Train Time!</h1>
-    <h3 class="text-center">Choo-Choo!</h3>
-  </div>
-
-  <div class="trains-text-center">
-    <div class="card mb-4">
-      <div class="card-header">Today's Train Schedule</div>
-      <div class="card-body">
-        <table class="table table-sm table-hover" id='train-table'>
-          <thead>
-            <tr>
-              <th scope="col">Train</th>
-              <th scope="col">Destination</th>
-              <th scope="col">Frequency</th>
-              <th scope="col">Next Arrival</th>
-              <th scope="col">Minutes Away</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
+    <p class="text-center">randomClamshell Transit
+        <a href="https://github.com/randomclamshell/trainSched"> 
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ei-sc-github.svg/1024px-Ei-sc-github.svg.png" width="10%" height="10%"></a>
+    </p>
+    <div class="time">
     </div>
   </div>
+<br>
+  <div class="trainTable">
+    <div class="trainData">
+    <table class="table table-sm table-hover" id='train-table'>
+      <thead>
+        <tr>
+          <th scope="col">Line</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Frequency</th>
+          <th scope="col">Next Arrival</th>
+          <th scope="col">Minutes Away</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  </div>
 
-  <div class="card mb-4" id="trainCard">
-      <div class="card-header">Add Train</div>
+  <div class="trainAdd">
   <div class="text-center">
     <div class="form-group">
       <form>
         <label for="train-name-input">Train Name</label>
-        <input class="form-control" placeholder="Hogwarts Express" id="train-name-input" type="text">
+        <input class="form-control" id="train-name-input" type="text">
     </div>
     <div class="form-group">
         <form>
           <label for="destination-name-input">Destination</label>
-          <input class="form-control" placeholder="North Pole" id="destination-name-input" type="text">
+          <input class="form-control" id="destination-name-input" type="text">
       </div>
       <div class="form-group">
           <form>
-            <label for="first-train-time-input">First Train Time (Military so 00:00)</label>
-            <input class="form-control" placeholder="12:00" id="first-train-time-input" type="text">
+            <label for="first-train-time-input">First Train Time (24hrs)</label>
+            <input class="form-control" id="first-train-time-input" type="text">
         </div>
         <div class="form-group">
             <form>
               <label for="frequency-input">Frequency</label>
-              <input class="form-control" placeholder="5" id="frequency-input" type="text">
+              <input class="form-control" id="frequency-input" type="text">
           </div>
     </form>
     <button type="button" id="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Train</button>
-    
+    </div>
   </div>
 </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
