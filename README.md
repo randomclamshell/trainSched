@@ -1,23 +1,17 @@
 # Train Schedule
 ------------------------------------------------------------
 
-## Table of Contents
-1. [Overview](#overview)
-2. [Tech](#tech)
-3. [Installing](#installing)
-
-<a name= "overview"></a>
-
 ## Overview
 
-Crystal Collector is a Javascript app that uses Math.floor(Math.random()) to generate a random number between 20 and 80. There are 4 crystals on the screen. For each game, a random value between 1 and 9 is assigned to each crystal. The user will not know the value of each crystal until it is clicked. The object of the game is to use the crystals to get the computer's number shown.
+This is a web app built for my imaginary train line. :) Users can add a new train to the database and it will provide you with the corresponding info for the train (Arrival)
 
 <a name= "Tech"></a>
 
 ## Tech
 
-- Math.floor()
-- Math.random()
+- Moment.js
+- Firebase
+- Javascript
 - Bootstrap
 - Google Fonts
 - jQuery
